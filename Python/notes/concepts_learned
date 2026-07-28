@@ -1,0 +1,19 @@
+# What I Learned — My Notes
+
+## Day 2 - Indentation & Return
+
+- Indentation shows what code is "inside" what. Like a box inside a box.
+- If a line is indented more than the line above it, it belongs to that line.
+- `return` stops the function right away. If it's inside a loop, the function 
+  stops too early — before the loop finishes.
+- `return` should come after the loop is fully done, not inside it.
+- I still need more practice deciding indent levels on my own.
+
+## Day 1 - Functions & max()
+
+- `max()` is already built into Python. When I wrote my own `max()`, it worked 
+  because Python let me replace it with my version.
+- `def` is used to create a function.
+- `main()` is not a special Python word. It's just a common name people use 
+  to organize the code that runs first.
+- `range(size)` starts counting from 0 and stops before size.
