@@ -1,0 +1,46 @@
+"""
+Day 2 - Triangle
+Question: Translate the given algorithm (in comments) into code. printTriangle(size) 
+should print a triangle of stars with 'size' rows and return the total count of stars 
+printed (no newline after each '*', use end=''). main() should call it for height 4 
+and height 7, printing the total star count each time.
+Approach: Nested loops - outer loop (i) controls rows, inner loop (j) controls stars 
+per row. Fixed 4 bugs from first attempt: variable name casing (starCount/starcount, 
+numStars/numstars), starCount += 1 was outside the inner loop (counted rows not stars), 
+return statement was inside the outer loop (exited after row 1), and was returning 
+'size' instead of the actual star count. Key lesson: return exits a function immediately - 
+placement and indentation matter a lot in Python.
+Status: Completed - height 4 gives 10 total stars, height 7 gives 28 total stars
+"""
+
+def printTriangle(size):
+    # Start with starCount being 0.
+    starCount = 0
+    # Count from 0 (inclusive) to size (exclusive),
+    # and for each number i that you count,
+    for i in range(size):
+        # count from 0 (inclusive) to i (inclusive),
+        # and for each number j that you count,
+        for j in range(i + 1):
+            # print a "*" without printing a newline,
+            print("*", end="")
+            # increment starCount.
+            starCount += 1
+        # print a newline
+        print("")
+    # When you finish counting on i,
+    # your answer is starCount.
+    return starCount
+
+
+def main():
+    print("Here is a triangle with height 4:")
+    numStars = printTriangle(4)
+    print("That triangle had " + str(numStars) + " total stars.")
+
+    print("Here is a triangle with height 7:")
+    numStars = printTriangle(7)
+    print("That triangle had " + str(numStars) + " total stars.")
+
+
+main()
