@@ -1,5 +1,65 @@
 # What I Learned — My Notes
 
+## Day 3 - Python Basics — Concepts Learned So Far
+
+**1. Variables**
+- Used to store data values (e.g., `age = 21`)
+- Case-sensitive, no spaces, can't start with a number
+
+**2. Data Types**
+- `int` (whole numbers), `float` (decimals), `str` (text - to be give data in quote single / double), `bool` (True/False)
+
+**3. Arithmetic Operators**
+- `+`, `-`, `*`, `/`, `//` (floor division), `%` (modulus), `**` (exponent)
+- Used for basic calculations on numeric variables
+
+**4. Comparison Operators**
+- `==` (equal to), `!=` (not equal), `>`, `<`, `>=`, `<=`
+- Return `True`/`False` — used to build conditions
+
+**5. If/Else**
+- Basic conditional syntax
+if condition:
+    # code if condition is True
+else:
+    # code if condition is False
+
+**6. Nested If/Else**
+- Checking a second condition only after the first is true
+- Syntax
+if condition1:
+    if condition2:
+        # code if both condition1 and condition2 are True
+    else:
+        # code if condition1 True, condition2 False
+else:
+    # code if condition1 is False
+
+**7. Elif Chains**
+- Multiple conditions checked top to bottom
+- Execution stops at the **first True match** — rest are skipped even if also technically true
+- Order matters — write from highest/most specific condition down
+- Syntax
+if condition1:
+    # code if condition1 is True
+elif condition2:
+    # code if condition1 False, condition2 True
+elif condition3:
+    # code if condition1, condition2 False, condition3 True
+else:
+    # code if none of the above are True
+
+**8. Range Conditions**
+- Using `and`, or Python's chained comparison shortcut (`75 <= marks < 90`)
+- Applied to real-world cases: ticket price
+
+**Practice done:**
+- Built a **ticket pricing system** using if/elif/else with range conditions (age-based: Free / $100 / $250 / $120)
+- Debugged own code — fixed comparison operator errors (`=` vs `==` vs `<=`), invalid operators (`->`, `=>`), case sensitivity (`Print` vs `print`, `Main()` vs `main()`), missing `()` in function definitions
+
+**Key takeaway:**
+Understood the concept of **indentation levels** in Python (how if/elif/else blocks and function bodies must be indented to define scope) — but need more hands-on practice to apply this comfortably without errors, especially with nested blocks and functions.
+
 ## Day 2 - Indentation & Return
 
 - Indentation shows what code is "inside" what. Like a box inside a box.
