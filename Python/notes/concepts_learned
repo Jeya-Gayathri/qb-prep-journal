@@ -52,6 +52,11 @@ else:
 **8. Range Conditions**
 - Using `and`, or Python's chained comparison shortcut (`75 <= marks < 90`)
 - Applied to real-world cases: ticket price
+**9. Logical Operators**
+- and — all conditions must be True
+- or — at least one condition must be True
+- not — flips True/False
+- not in — checks if a value is missing from a list (same as SQL's NOT IN)
 
 **Practice done:**
 - Built a **ticket pricing system** using if/elif/else with range conditions (age-based: Free / $100 / $250 / $120)
