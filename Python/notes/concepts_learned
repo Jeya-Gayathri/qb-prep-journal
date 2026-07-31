@@ -1,5 +1,24 @@
 # What I Learned — My Notes
 
+## Day 4 - Loops, For Loop & f-String
+**1. Loop**
+- Used to avoid repetition in writing the same code multiple times.
+- Two types:
+- `for`
+- `while`
+
+**2. For Loop**
+
+- Used when we know the number of occurrences/iterations.
+
+- Syntax:
+for variable in range(start, stop, step):
+# operation to be repeated
+
+**3.f-string**
+-directly uses the value of variables and can also evaluate expressions/calculations inside {}
+-Ex: print(f"{num} * {i} = {num*i}")
+
 ## Day 3 - Python Basics — Concepts Learned So Far
 
 **1. Variables**
