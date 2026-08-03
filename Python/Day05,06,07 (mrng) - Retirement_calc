@@ -1,0 +1,59 @@
+## Retirement Calculator Assignment — Coursera (Duke Python Course)
+
+**Status: ✅ PASSED — 100% Grade**
+
+**Timeline:**
+- **Aug 1** — First attempt at understanding and writing the assignment; built initial versions of `calculate_one_phase` and `calculate_retirement`
+- **Aug 2 (daytime)** — Light, scattered engagement; limited focused progress
+- **Aug 2 (evening) → Aug 3 (morning)** — Full focused push; systematically debugged through to a complete, passing solution
+
+**What was built:**
+- `calculate_one_phase()` — simulates one financial phase (working or retired) month by month, applying interest + contribution, printing progress in required format
+- `calculateRetirement()` — orchestrates both phases, passing the ending balance and age from the working phase into the retired phase
+
+**Bugs identified and fixed independently (with guidance):**
+1. Multiple `IndentationError`s (mismatched indent levels)
+2. `UnboundLocalError` — parameter names inside function didn't match what was actually passed in
+3. **Argument order bug** — function arguments matched by position, not name; values were being passed in the wrong order, causing corrupted output (age used balance value)
+4. Print-before-vs-after-update ordering — balance was printing post-interest instead of pre-interest, causing every printed line to be one step ahead of expected
+5. Print format string precision — spacing and field-width mismatches (`{:3d}` vs `{:2d}`)
+6. **Function naming case-sensitivity** — `calculateretirement` vs `calculateRetirement` — final blocker before passing; confirmed a genuine README-vs-grader naming inconsistency on Coursera's side, worth flagging to them separately
+
+**Key concepts reinforced:**
+- Function arguments are matched by **position, not name** — order matters
+- Exact naming (including capitalization) is critical for automated grading systems
+- The value/importance of `return` statements — a function's return value is what gets used/checked by code (or graders) calling it, separate from anything it prints
+
+---
+
+Code:
+
+def calculate_one_phase(nom, p, phase_info):
+    wkg_mnt = phase_info[0]
+    contri = phase_info[1]
+    roi = phase_info[2]
+    end_age = nom + wkg_mnt
+    for i in range (0,phase_info[0]):
+        year = nom //12
+        month = nom % 12
+        cb = p + (p * roi) + contri
+        print('Age {:3d} month{:3d} you have ${:.2f}'.format(year,month,p))
+        p = cb
+        nom = nom + 1 
+    return cb, end_age
+
+def calculateRetirement(start_age, cb, wkg, rtd):
+
+    end_age = start_age + wkg[0]
+    total_contri,end_age = calculate_one_phase(start_age, cb, wkg)
+    final_bal,dummy = calculate_one_phase(end_age, total_contri, rtd)
+    #print('your current balance is ${:.2f}'.format(final_bal))
+    return final_bal
+
+def main():
+    wkg = (489, 1000, 0.045/12)
+    rtd = (384, -4000, 0.01/12)
+    calculateRetirement(327, 21345, wkg, rtd)
+    
+if __name__ == "__main__":
+    main()
