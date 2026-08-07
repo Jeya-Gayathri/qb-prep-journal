@@ -1,5 +1,29 @@
 # What I Learned — My Notes
 
+##Day-08,09 
+
+List Max — Course 2, Module 4 (Diving Deeper with Lists)
+
+**Concept: Lists as references to mutable objects**
+
+Lists in Python are mutable and variables hold *references* to them, not
+copies. Assigning `B = A` doesn't create a new list — both names point to
+the same object in memory, so changing one changes the other.
+
+This is the same underlying gotcha as the `B = A` vs `B = A.copy()` bug from
+the Debugging reading — squaring `B` in that example silently squared `A`
+too, because no real copy was ever made. Same pattern will resurface later
+in NumPy/Pandas as "views vs copies" — worth remembering as one concept
+wearing three names across the course.
+
+**listMax() logic**
+- Guard first: if `list` is `None` or empty, return `None` before touching
+  anything else.
+- Initialize `Max` to the first element rather than 0 or a sentinel — safe
+  even for all-negative lists (tested against `list2` above).
+- Single pass from index 1, updating `Max` whenever a larger element is found.
+- Status: 100%
+
 ## Day 4 - Loops, For Loop & f-String
 **1. Loop**
 - Used to avoid repetition in writing the same code multiple times.
