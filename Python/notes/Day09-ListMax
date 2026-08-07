@@ -1,0 +1,58 @@
+# Question: Duke Python C1 - Course 2, Module 4 (Diving Deeper with Lists)
+#           List Max - find and return the maximum value in a list
+# Approach: Handle None/empty list first (return None). Otherwise initialize
+#           Max to the first element, then loop from index 1 comparing each
+#           element and updating Max when a larger value is found.
+# Status:   Complete - 100%
+# Note: listMax() is my own code. doTest() and main() are course-provided
+#       test scaffolding, included as-is to run the assignment.
+
+def listMax(list):
+    if list is None or len(list) == 0:
+        return None
+    Max = list[0]
+    for i in range (1,len(list)):
+        if list[i] > Max:
+            Max = list[i]
+    return Max
+    pass
+
+def doTest(list):
+    print('listMax(',end='')
+    if list == None:
+        print('None) is ',end='')
+        pass
+    else:
+        n = len(list)
+        print('[',end='')
+        for i in range(0, n):
+            print('{}'.format(list[i]),end='')
+            if i < n - 1:
+                print(', ',end='')
+                pass
+            pass
+        print(']) is ',end='')
+        pass
+    max = listMax(list)
+    if max == None:
+        print('None')
+        pass
+    else:
+        print('{}'.format(max))
+        pass
+    pass
+
+def main():
+    list1 = [77, 33, 19, 99, 42, 6, 27, 4]
+    list2 = [-3, -42, -99, -1000, -999, -88, -77]
+    list3 = [425, 59, -3, 77, 0, 36]
+    doTest(list1)
+    doTest(list2)
+    doTest(list3)
+    doTest(None)
+    doTest([])
+    return 0
+
+if __name__ == '__main__':
+    main()
+    pass
