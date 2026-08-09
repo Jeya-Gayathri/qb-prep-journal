@@ -1,0 +1,41 @@
+count_laps.py (is_peak_at) — from earlier session, reused via symlink:
+def is_peak_at(data, index, w):
+    if (index - w) < 0:
+        return False
+    if index >= (len(data) - w):
+        return False
+    for j in range(1, w+1):
+        if data[index] <= data[index-j]:
+            return False
+        if data[index] < data[index+j]:
+            return False
+    return True
+
+moving_avg.py — Heart Rate Moving Averages:
+from count_laps import is_peak_at
+def find_moving_average(data, n):
+    result = []
+    for i in range(0, len(data)-n+1):
+        sum_hr = sum(data[i:i+n])
+        len_hr = len(data[i:i+n])
+        avg_hr = sum_hr / len_hr
+        result.append(avg_hr)
+    return result
+def get_only_peaks(data, w):
+    peak = []
+    for i in range(0, len(data)):
+        if is_peak_at(data, i, w):
+            peak.append(data[i])
+    return peak
+def moving_average_of_peaks(data, n, w):
+    peak = get_only_peaks(data, w)
+    avg_peak = find_moving_average(peak, n)
+    return avg_peak
+
+
+Subsequence Test Cases — check() calls (final versions):
+check([], 0)
+check([1,2,3,1], 3)
+check([1,2,0,1,2,1,5,6,7,8], 5)
+check([-4,-5,0,1], 3)
+check([5,1,2,3,4], 4)
