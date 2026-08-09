@@ -1,15 +1,24 @@
 # What I Learned — My Notes
+##Day-10
+Heart Rate Moving Averages (Course 1, Module 4)
+Question: Implement find_moving_average, get_only_peaks, moving_average_of_peaks for heart rate data analysis
+Approach: Built moving average using sliding window (data[i:i+n]) with sum/len; reused is_peak_at from prior assignment via symlink to extract peak values; chained get_only_peaks output directly into find_moving_average for the combined function
+Status: 100% — all test cases passed, including edge cases (empty list, single-element windows)
+Subsequence Test Cases (Course 1)
+Question: Design test cases (check(input, expected)) that would catch specific bugs in a maxSeq (longest contiguous increasing subsequence) implementation
+Approach: For each described bug (empty list handling, non-decreasing vs. strictly-increasing confusion, off-by-one iteration errors, wrong return placement, faulty initialization to 0, max-not-updated edge case), constructed inputs where buggy and correct logic would diverge
+Status: All 7 questions passed
+Duke Course 1 — Python Programming Fundamentals
+Status: COMPLETE — Certificate ID T4G2RVW6Y1OY, issued 9 Aug 2026
+
 
 ##Day-08,09 
 
 List Max — Course 2, Module 4 (Diving Deeper with Lists)
-
 **Concept: Lists as references to mutable objects**
-
 Lists in Python are mutable and variables hold *references* to them, not
 copies. Assigning `B = A` doesn't create a new list — both names point to
 the same object in memory, so changing one changes the other.
-
 This is the same underlying gotcha as the `B = A` vs `B = A.copy()` bug from
 the Debugging reading — squaring `B` in that example silently squared `A`
 too, because no real copy was ever made. Same pattern will resurface later
