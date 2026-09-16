@@ -1,0 +1,48 @@
+import math
+from point import Point
+
+class Circle:
+    def __init__(self, center=None, radius=1):
+        # None-check idiom: avoids using a mutable Point default directly
+        if center is None:
+            center = Point(0, 0)
+        self.center = center
+        self.radius = radius
+
+    def __str__(self):
+        return f"Circle(center={self.center}, radius={self.radius})"
+
+    def __repr__(self):
+        return f"Circle({repr(self.center)}, {self.radius})"
+
+    def move(self, dx, dy):
+        # Delegate the actual movement to the Point's own move method
+        self.center.move(dx, dy)
+
+    def intersection_area(self, other):
+        d = self.center.distance_from(other.center)
+        r1, r2 = self.radius, other.radius
+
+        if d >= r1 + r2:
+            return 0.0
+        if d <= abs(r1 - r2):
+            smaller = min(r1, r2)
+            return math.pi * smaller ** 2
+
+        # Circular segment formula (Law of Cosines based) — taken as a
+        # working formula, conceptually understood but not hand-derived,
+        # since exact derivation has zero relevance to the target role
+        part1 = r1**2 * math.acos((d**2 + r1**2 - r2**2) / (2 * d * r1))
+        part2 = r2**2 * math.acos((d**2 + r2**2 - r1**2) / (2 * d * r2))
+        part3 = 0.5 * math.sqrt((-d + r1 + r2) * (d + r1 - r2) * (d - r1 + r2) * (d + r1 + r2))
+        return part1 + part2 - part3
+
+
+if __name__ == '__main__':
+    c1 = Circle(Point(0, 0), 5)
+    c2 = Circle(Point(3, 0), 4)
+    print(c1)
+    print(repr(c2))
+    print(c1.intersection_area(c2))
+    c1.move(1, 1)
+    print(c1)
