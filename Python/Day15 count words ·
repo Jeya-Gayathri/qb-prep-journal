@@ -1,0 +1,34 @@
+from operator import itemgetter
+
+weird_characters = '-?.!,[]—:;"\''
+
+def countWords(counts, line):
+    words = line.split()
+    for word in words:
+        word = word.strip(weird_characters).lower()
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
+    return counts
+
+
+def printResults(counts):
+    as_list = list(counts.items())
+    as_list.sort(key=itemgetter(0))
+    for word, count in as_list:
+        print(word, ":", count)
+
+
+# You do not need to modify this function.
+# It will call your countWords and printResults functions
+def countFile(fname):
+    counts = {}
+    with open(fname) as f:
+        for line in f:
+            countWords(counts, line)
+    printResults(counts)
+
+
+if __name__ == '__main__':
+    countFile('caesar.txt')
