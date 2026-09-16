@@ -1,4 +1,33 @@
 # What I Learned — My Notes
+
+Cross-cutting takeaway
+Recognized a genuine gap: can follow and explain code logic once shown, but blank-page code production is still the harder skill. Plan going forward: attempt the full solution first (even messy/wrong), then debug as a whole — rather than building line-by-line with heavy guidance.
+
+Day 15 — Count Words
+line.split() to tokenize on whitespace
+.strip(chars) to remove leading/trailing punctuation, .lower() to normalize case
+itemgetter(0) from the operator module — a general-purpose "grab position 0" tool, most commonly paired with .sort(key=...); functionally equivalent to lambda x: x[0], just a faster built-in shortcut for that one common pattern
+Reused the same sort(key=...) concept from the Closest Point test harness's lambda p: (p.x, p.y)
+
+Day 14 — Closest Point
+Manual "track the best so far" pattern: sd = None sentinel, updated inside a loop
+if sd is None or d < sd — combining a first-run check with a comparison using or
+Tie-handling with elif d == sd: closest.add(point) — growing a set instead of replacing it
+List slicing (points[:i], points[i+1:]) to build a "everyone except index i" set
+set() vs {} — {} always means an empty dict by default; set() is required for an empty set
+.add() (sets) vs .append() (lists) — different methods for different collection types
+
+Day 13 — Circle Class
+None-check idiom to avoid a mutable default argument (Point() as a default)
+Delegation pattern — Circle.move() calls self.center.move() rather than reimplementing movement
+intersection_area() — circular segment formula (Law of Cosines based), taken as a working formula rather than hand-derived, given zero relevance to the target role
+
+Day 12 — Point Class
+__init__ with default args, self as the calling object
+__str__ vs __repr__ — readable display vs unambiguous/code-true display (f-string formatting for both)
+move() using += to mutate instance state
+distance_from() — Pythagorean theorem (math.sqrt(dx**2 + dy**2)), rebuilt from first principles (why you can't distribute a square root across a sum: √(a²+b²) ≠ a+b)
+
 ##Day-11
 Started Course 2 of Duke-Coursera - Data Science with NumPy, Sets, and Dictionaries
 
